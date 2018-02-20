@@ -43,6 +43,7 @@ class LoginViewController: UIViewController {
             PFUser.logInWithUsername(inBackground: usernameTextField.text!, password: passwordTextField.text!) { (user, error) in
                 if(user != nil){
                     // Go with this user
+                    self.performSegue(withIdentifier: "loginSuccess", sender: nil)
                 }
                 else{
                     print(error?.localizedDescription ?? "Error")
@@ -67,6 +68,7 @@ class LoginViewController: UIViewController {
             newUser.signUpInBackground { (success, error) in
                 if(success){
                     // Go to priveledged feed
+                    self.performSegue(withIdentifier: "loginSuccess", sender: nil)
                     
                 }
                 else{
