@@ -16,6 +16,7 @@ class ChatFeedViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var chatMessageTableView: UITableView!
     
     var alertController: UIAlertController!
+    var refreshControl: UIRefreshControl!
     
     var messages: [String] = []
     var usernames: [String] = []
@@ -30,6 +31,10 @@ class ChatFeedViewController: UIViewController, UITableViewDelegate, UITableView
         
         chatMessageTableView.rowHeight = UITableViewAutomaticDimension
         chatMessageTableView.estimatedRowHeight = 120
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(ChatFeedViewController.didPullToRefresh(_:)), for: .valueChanged)
+        chatMessageTableView.insertSubview(refreshControl, at: 0)
         
         sendButton.isEnabled = false
         alertController = UIAlertController(title: "", message: "Are you sure?", preferredStyle: .actionSheet)
@@ -82,6 +87,11 @@ class ChatFeedViewController: UIViewController, UITableViewDelegate, UITableView
                 print("Whoops! \(error?.localizedDescription)")
             }
         }
+        self.refreshControl.endRefreshing()
+    }
+    
+    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl){
+        fetchMessages(nil)
     }
     
     @objc func textDidChange(_ textField: UITextField){
