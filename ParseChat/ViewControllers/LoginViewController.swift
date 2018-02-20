@@ -16,6 +16,8 @@ class LoginViewController: UIViewController {
     
     var alertController: UIAlertController!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         alertController = UIAlertController(title: "Error", message: "Username or Password cannot be empty", preferredStyle: .alert)
@@ -33,20 +35,26 @@ class LoginViewController: UIViewController {
 
     @IBAction func login(_ sender: Any) {
         
-        if((usernameTextField.text?.isEmpty)! || (passwordTextField.text?.isEmpty)!){
+        if((usernameTextField.text!.isEmpty) || (passwordTextField.text!.isEmpty)){
             print("Empty!")
             present(alertController, animated: true, completion: {
                 // After action
             })
         }
         else{
+            activityIndicator.startAnimating()
             PFUser.logInWithUsername(inBackground: usernameTextField.text!, password: passwordTextField.text!) { (user, error) in
                 if(user != nil){
                     // Go with this user
+                    self.activityIndicator.stopAnimating()
                     self.performSegue(withIdentifier: "loginSuccess", sender: nil)
                 }
                 else{
-                    print(error?.localizedDescription ?? "Error")
+                    self.alertController.message = "\(error!.localizedDescription)"
+                    self.present(self.alertController, animated: true, completion: {
+                        // After action
+                        self.activityIndicator.stopAnimating()
+                    })
                 }
             }
         }
@@ -54,13 +62,14 @@ class LoginViewController: UIViewController {
     
     @IBAction func signup(_ sender: Any) {
         
-        if((usernameTextField.text?.isEmpty)! || (passwordTextField.text?.isEmpty)!){
+        if((usernameTextField.text!.isEmpty) || (passwordTextField.text!.isEmpty)){
             print("Empty!")
             present(alertController, animated: true, completion: {
                 // After action
             })
         }
         else{
+            activityIndicator.startAnimating()
             let newUser = PFUser()
             newUser.username = usernameTextField.text!
             newUser.password = passwordTextField.text!
@@ -68,12 +77,17 @@ class LoginViewController: UIViewController {
             newUser.signUpInBackground { (success, error) in
                 if(success){
                     // Go to priveledged feed
+                    self.activityIndicator.stopAnimating()
                     self.performSegue(withIdentifier: "loginSuccess", sender: nil)
-                    
                 }
                 else{
                     // Print error
                     print(error?.localizedDescription ?? "Error")
+                    self.alertController.message = "\(error!.localizedDescription)"
+                    self.present(self.alertController, animated: true, completion: {
+                        // After action
+                        self.activityIndicator.stopAnimating()
+                    })
                 }
             }
         }

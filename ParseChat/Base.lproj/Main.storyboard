@@ -59,7 +59,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HdY-Tf-V78">
                                 <rect key="frame" x="217" y="339" width="55" height="30"/>
@@ -82,6 +82,10 @@
                                     <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jLr-lE-QMh"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="7yo-4p-yQB">
+                                <rect key="frame" x="169" y="297" width="37" height="37"/>
+                                <color key="color" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -89,10 +93,12 @@
                             <constraint firstItem="PCt-PR-9ue" firstAttribute="leading" secondItem="LL1-F9-9hb" secondAttribute="leading" id="0aO-Xq-E65"/>
                             <constraint firstItem="PCt-PR-9ue" firstAttribute="top" secondItem="LL1-F9-9hb" secondAttribute="bottom" constant="8" id="2Jw-ce-x5J"/>
                             <constraint firstItem="rsD-fu-UyV" firstAttribute="top" secondItem="8ds-8m-Cif" secondAttribute="bottom" constant="8" id="30H-jN-FL1"/>
+                            <constraint firstItem="7yo-4p-yQB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="169" id="3I4-eP-jmt"/>
                             <constraint firstItem="LL1-F9-9hb" firstAttribute="leading" secondItem="8ds-8m-Cif" secondAttribute="leading" id="6d1-Hj-863"/>
                             <constraint firstItem="PCt-PR-9ue" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="8nF-0M-F6w"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="HdY-Tf-V78" secondAttribute="bottom" constant="298" id="9Bf-bw-bQH"/>
                             <constraint firstItem="LL1-F9-9hb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="CIX-UM-pY4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7yo-4p-yQB" secondAttribute="trailing" constant="169" id="KPV-9Q-cAX"/>
                             <constraint firstItem="LL1-F9-9hb" firstAttribute="top" secondItem="rsD-fu-UyV" secondAttribute="bottom" constant="21" id="MEX-om-Uvx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PCt-PR-9ue" secondAttribute="trailing" constant="20" id="N19-L0-rhO"/>
                             <constraint firstItem="PCt-PR-9ue" firstAttribute="leading" secondItem="8ds-8m-Cif" secondAttribute="leading" id="NDW-SE-fza"/>
@@ -102,6 +108,7 @@
                             <constraint firstItem="HdY-Tf-V78" firstAttribute="top" secondItem="PCt-PR-9ue" secondAttribute="bottom" constant="56" id="SwG-Jh-zPU"/>
                             <constraint firstItem="HdY-Tf-V78" firstAttribute="leading" secondItem="6VP-Jq-8G9" secondAttribute="trailing" constant="67" id="TOF-jq-LOv"/>
                             <constraint firstItem="PCt-PR-9ue" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="LL1-F9-9hb" secondAttribute="trailing" constant="20" id="U3R-Fq-Nzk"/>
+                            <constraint firstItem="7yo-4p-yQB" firstAttribute="top" secondItem="PCt-PR-9ue" secondAttribute="bottom" constant="14" id="a3d-aG-Smz"/>
                             <constraint firstItem="8ds-8m-Cif" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="ced-lt-dp6"/>
                             <constraint firstItem="VUS-MC-cEH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="23" id="ddl-Ea-RyR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rsD-fu-UyV" secondAttribute="trailing" constant="20" id="dyb-mB-CTs"/>
@@ -112,11 +119,13 @@
                             <constraint firstItem="PCt-PR-9ue" firstAttribute="top" secondItem="rsD-fu-UyV" secondAttribute="bottom" constant="50" id="pvD-Vj-GVD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="HdY-Tf-V78" secondAttribute="trailing" constant="103" id="spM-Wb-eJ1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="6VP-Jq-8G9" secondAttribute="bottom" constant="298" id="ttJ-Dw-bFz"/>
+                            <constraint firstItem="7yo-4p-yQB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="x2C-R2-fwL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8ds-8m-Cif" secondAttribute="trailing" constant="8" id="yIS-hY-9U6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="7yo-4p-yQB" id="0II-3j-6jS"/>
                         <outlet property="passwordTextField" destination="PCt-PR-9ue" id="TpJ-5x-xVb"/>
                         <outlet property="usernameTextField" destination="rsD-fu-UyV" id="815-rJ-kyU"/>
                         <segue destination="fGp-tX-Dus" kind="presentation" identifier="loginSuccess" id="tLA-Kj-6aH"/>
